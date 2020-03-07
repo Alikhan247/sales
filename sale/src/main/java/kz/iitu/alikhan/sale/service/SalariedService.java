@@ -17,6 +17,10 @@ public class SalariedService {
         this.salaryDao = salaryDao;
     }
 
+    public void updateEmployeeSalary(int id){
+       salaryDao.updateSalary(id);
+    }
+
     public void showAllEmployees(){
         List<Salaried> employees = salaryDao.getAll();
         System.out.println();
@@ -25,6 +29,5 @@ public class SalariedService {
             System.out.println(employee.toString());
         }
         System.out.println();
-
     }
 }

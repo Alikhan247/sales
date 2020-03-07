@@ -26,7 +26,7 @@ public class SalariedController {
     }
 
     public void updateEmployee(int id){
-//        salariedService.showAllEmployees();
+        salariedService.updateEmployeeSalary(id);
     }
 
 }

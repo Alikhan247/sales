@@ -17,9 +17,10 @@ public class Main {
         salariedController.showMenu();
 
         Scanner sc = new Scanner(System.in);
-        if (sc.nextInt() == 1){
+        int input = sc.nextInt();
+        if (input == 1){
             salariedController.showAllEmployees();
-        } else if (sc.nextInt() == 2){
+        } else if (input == 2){
             System.out.println("Enter an id:");
             salariedController.updateEmployee(sc.nextInt());
         }

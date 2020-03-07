@@ -15,6 +15,7 @@ public class SalariedMapper implements RowMapper<Salaried> {
         employee.setSalary(resultSet.getInt(3));
         employee.setHourseWorked(resultSet.getInt(4));
 
+
         return employee;
     }
 }

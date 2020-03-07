@@ -3,6 +3,7 @@ package kz.iitu.alikhan.sale.Dao;
 import kz.iitu.alikhan.sale.Employee.Salaried;
 import kz.iitu.alikhan.sale.database.Database;
 import kz.iitu.alikhan.sale.event.UserCreateEvent;
+import kz.iitu.alikhan.sale.event.UserUpdateEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
@@ -23,6 +24,7 @@ public class SalaryDao implements ApplicationEventPublisherAware {
     private JdbcTemplate jdbcTemplate;
 
     private final String GET_ALL_EMPLOYEES = "SELECT * FROM employeeSalary";
+    private final String GET_EMPLOYEE_BY_ID = "SELECT * FROM employeeSalary WHERE id =";
     private final String UPDATE_EMPLOYEES_SALARY = "UPDATE employeeSalary SET salary =";
     private final String DELETE_EMPLOYEE = "DELETE FROM employeeSalary WHERE id =";
     private final String CHANGE_EMPLOYEE_NAME = "UPDATE employeeSalary SET name = ";
@@ -37,16 +39,17 @@ public class SalaryDao implements ApplicationEventPublisherAware {
         this.eventPublisher.publishEvent(new UserCreateEvent(this, user));
     }
 
-    public void updateSalary(Long id, Salaried user) {
-        System.out.println("UserDao.update");
+    public void updateSalary(int id) {
+        this.eventPublisher.publishEvent(new UserUpdateEvent(this, getUserById(id).get(0)));
+        jdbcTemplate.execute(UPDATE_EMPLOYEES_SALARY+"salary + (salary * 0.10) WHERE id ="+id);
     }
 
     public List<Salaried> getAll() {
         return jdbcTemplate.query(GET_ALL_EMPLOYEES, new SalariedMapper());
     }
 
-    public void update(Long id) {
-        System.out.println("UserDao.delete id: " + id);
+    public List<Salaried> getUserById(int id) {
+        return jdbcTemplate.query(GET_EMPLOYEE_BY_ID+id, new SalariedMapper());
     }
 
     @Override
