@@ -1,1 +1,1 @@
-# sales
+# sales project for the EAD course
