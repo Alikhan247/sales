@@ -1,32 +1,34 @@
 package kz.iitu.alikhan.sale.controller;
 
-import kz.iitu.alikhan.sale.service.SalariedService;
+import kz.iitu.alikhan.sale.service.EmplyeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SalariedController {
-    private SalariedService salariedService;
+    private EmplyeeService emplyeeService;
 
     @Autowired
-    public SalariedController(SalariedService salariedService){
-        this.salariedService = salariedService;
+    public SalariedController(EmplyeeService emplyeeService){
+        this.emplyeeService = emplyeeService;
     }
 
 
     public void showMenu(){
         System.out.println("Welcome!");
         System.out.println("Select an option:");
-        System.out.println("1) list all employees");
-        System.out.println("2) update employees");
+        System.out.println("1) list all users in the base");
+        System.out.println("2) update user");
+        System.out.println("3) add a bill");
     }
 
     public void showAllEmployees(){
-        salariedService.showAllEmployees();
+        emplyeeService.showAllEmployees();
     }
 
-    public void updateEmployee(int id){
-        salariedService.updateEmployeeSalary(id);
+    public void updateEmployee(){
+        emplyeeService.updateEmployeesSalary();
     }
+
 
 }

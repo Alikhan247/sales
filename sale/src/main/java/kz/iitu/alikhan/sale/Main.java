@@ -1,6 +1,5 @@
 package kz.iitu.alikhan.sale;
 
-import kz.iitu.alikhan.sale.Employee.SalariedCommission;
 import kz.iitu.alikhan.sale.controller.SalariedController;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -21,8 +20,7 @@ public class Main {
         if (input == 1){
             salariedController.showAllEmployees();
         } else if (input == 2){
-            System.out.println("Enter an id:");
-            salariedController.updateEmployee(sc.nextInt());
+            salariedController.updateEmployee();
         }
 
     }

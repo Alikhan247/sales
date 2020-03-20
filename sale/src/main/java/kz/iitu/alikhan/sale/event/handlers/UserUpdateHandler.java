@@ -12,6 +12,6 @@ public class UserUpdateHandler implements ApplicationListener<UserUpdateEvent> {
     public void onApplicationEvent(UserUpdateEvent userUpdateEvent) {
         System.out.println("UserUpdateHandler.onApplicationEvent");
         System.out.println("Updated user info: " + userUpdateEvent.getUser().getName());
-        System.out.println("Updated user salary now: " + userUpdateEvent.getUser().getSalary());
+        System.out.println("Updated user salary now: " + userUpdateEvent.getUser().getFixedSalary());
     }
 }
