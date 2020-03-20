@@ -17,7 +17,7 @@ public interface EmployeeDataRepository extends CrudRepository<Employee, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = Contract.UPDATE_EMPLOYEES_SALARY + "salary + (salary * 0.10) WHERE empl_type = 'SALARIED_COMMISSION'", nativeQuery = true)
+    @Query(value = Contract.UPDATE_EMPLOYEES_SALARY + "fixed_salary + (fixed_salary * 0.10) WHERE empl_type = 'SALARIED'", nativeQuery = true)
 
 
     void addSalaryIncrease();
